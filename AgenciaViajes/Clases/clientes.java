@@ -44,6 +44,7 @@ public class clientes {
 		this.localidad = localidad;
 	}
 	public clientes() {
+		
 	}
 	@Override
 	public String toString() {
