@@ -15,7 +15,7 @@ public class GestorClientes {
 		int opcion=1;
 		GestorBBDD gesto = new GestorBBDD();
 		do {
-			Menu.monstrarMenuPrincipal();
+			Menu.mostrarMenuClientes();
 			opcion = Integer.parseInt(scan.nextLine());
 			switch (opcion) {
 			case Menu.INSERTAR_CLIENTES:
@@ -33,7 +33,9 @@ public class GestorClientes {
 				break;
 			case Menu.VER_CLIENTES:
 				System.out.println("Ver Socios");
-				Visor.mostrarClientes(null);
+				gesto.Conectar();
+				Visor.mostrarClientes(gesto.getClientes());
+				gesto.cerrar();
 				break;
 			case Menu.SALIR:
 				System.out.println("Saliendo");

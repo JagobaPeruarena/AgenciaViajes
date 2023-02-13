@@ -66,5 +66,23 @@ public class GestorBBDD extends Conector {
 		return newCliente;
 		
 	}
+	public void insertarHotel(hoteles hotel) throws SQLException {
+		String sent ="INSERT INTO hoteles (cif,nombre,gerente,estrellas,compania) VALUES (?,?,?,?,?)";
+		PreparedStatement pt = con.prepareStatement(sent);
+		pt.setString(2, hotel.getCif());
+		pt.setString(3, hotel.getNombre());
+		pt.setString(4, hotel.getGerente());
+		pt.setInt(5, hotel.getEstrellas());
+		pt.setString(6, hotel.getCompania());
+		
+	}
+	public void eliminarHotel(int id) throws SQLException {
+		
+		String sent="DELETE FROM hoteles WHERE id=?";
+		PreparedStatement pt = con.prepareStatement(sent);
+		
+		pt.setInt(1, id);
+		pt.execute();
+	}
 
 }
