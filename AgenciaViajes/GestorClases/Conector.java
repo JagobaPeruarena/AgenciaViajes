@@ -8,11 +8,12 @@ import java.sql.SQLException;
 	public class Conector {
 		Connection con;
 		public void Conectar() throws ClassNotFoundException, SQLException {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			final String HOST="jdbc:mysql://localhost/";
 			final String BBDD="agencia_viajes";
 			final String USERNAME="root";
 			final String PASSWORD="";
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			
 			con = DriverManager.getConnection(HOST+BBDD,USERNAME,PASSWORD);
 		
 		}

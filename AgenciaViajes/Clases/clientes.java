@@ -48,7 +48,7 @@ public class clientes {
 	}
 	@Override
 	public String toString() {
-		return dni + ", " + nombre + ", " + apellidos + ", " + direccion + ", " + localidad;
+		return dni + "," + nombre + ", " + apellidos + ", " + direccion + ", " + localidad;
 	}
 	
 	

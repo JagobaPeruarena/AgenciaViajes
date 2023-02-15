@@ -51,13 +51,13 @@ public class GestorBBDD extends Conector {
 		pt.setInt(1, id);
 		pt.execute();
 	}
-	public clientes getSocio(int id) throws SQLException {
+	public clientes getCliente(int id) throws SQLException {
 		clientes newCliente= new clientes();
 		PreparedStatement pt = con.prepareStatement("SELECT * FROM clientes where ID = ?");
 		pt.setInt(1, id);
 		ResultSet resultado=pt.executeQuery();
 			
-		newCliente.setDni(resultado.getString(7));
+		newCliente.setDni(resultado.getString(1));
 		newCliente.setNombre(resultado.getString(2));
 		newCliente.setApellidos(resultado.getString(3));
 		newCliente.setDireccion(resultado.getString(4));
@@ -69,12 +69,12 @@ public class GestorBBDD extends Conector {
 	public void insertarHotel(hoteles hotel) throws SQLException {
 		String sent ="INSERT INTO hoteles (cif,nombre,gerente,estrellas,compania) VALUES (?,?,?,?,?)";
 		PreparedStatement pt = con.prepareStatement(sent);
-		pt.setString(2, hotel.getCif());
-		pt.setString(3, hotel.getNombre());
-		pt.setString(4, hotel.getGerente());
-		pt.setInt(5, hotel.getEstrellas());
-		pt.setString(6, hotel.getCompania());
-		
+		pt.setString(1, hotel.getCif());
+		pt.setString(2, hotel.getNombre());
+		pt.setString(3, hotel.getGerente());
+		pt.setInt(4, hotel.getEstrellas());
+		pt.setString(5, hotel.getCompania());
+		pt.execute();
 	}
 	public void eliminarHotel(int id) throws SQLException {
 		

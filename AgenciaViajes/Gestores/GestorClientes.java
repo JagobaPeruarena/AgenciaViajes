@@ -28,7 +28,9 @@ public class GestorClientes {
 			case Menu.ELIMINAR_CLIENTES:
 				System.out.println("Eliminar Socio");
 				gesto.Conectar();
-				gesto.eliminarCliente(opcion);
+				System.out.println("Di la id");
+				int op = Integer.parseInt(scan.nextLine());
+				gesto.eliminarCliente(op);
 				gesto.cerrar();
 				break;
 			case Menu.VER_CLIENTES:

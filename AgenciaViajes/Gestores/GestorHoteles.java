@@ -27,7 +27,9 @@ public class GestorHoteles {
 			case Menu.ELIMINAR_HOTELES:
 				System.out.println("Eliminar Hotel");
 				gesto.Conectar();
-				gesto.eliminarHotel(opcion);
+				System.out.println("Di la id");
+				int op = Integer.parseInt(scan.nextLine());
+				gesto.eliminarHotel(op);
 				gesto.cerrar();
 				break;
 			case Menu.VER_HOTELES:
