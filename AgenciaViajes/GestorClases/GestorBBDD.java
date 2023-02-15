@@ -77,6 +77,33 @@ public class GestorBBDD extends Conector {
 		pt.setString(5, hotel.getCompania());
 		pt.execute();
 	}
+	public ArrayList<hoteles> getHoteles(){
+
+		ArrayList<hoteles> hoteles = new ArrayList<hoteles>();
+ 
+		try {
+			PreparedStatement st = con.prepareStatement("select * from hoteles");
+			ResultSet rs = st.executeQuery();
+
+			
+			while (rs.next()) {
+				hoteles hotel = new hoteles();
+				hotel.setId(rs.getInt(1));
+				hotel.setCif(rs.getString(2));
+				hotel.setNombre(rs.getString(3));
+				hotel.setGerente(rs.getString(4));
+				hotel.setEstrellas(rs.getInt(5));	
+				hotel.setCompania(rs.getString(6));
+				
+				
+				hoteles.add(hotel);
+			}
+			return hoteles;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public void eliminarHotel(int id) throws SQLException {
 		
 		String sent="DELETE FROM hoteles WHERE id=?";

@@ -9,7 +9,7 @@ import Gestores.GestorHoteles;
 public class main {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Scanner sca = new Scanner(System.in);
-		GestorClientes.run(sca);
+		GestorHoteles.run(sca);
 	}
 	
 

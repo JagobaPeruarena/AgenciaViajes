@@ -34,7 +34,9 @@ public class GestorHoteles {
 				break;
 			case Menu.VER_HOTELES:
 				System.out.println("Ver Hoteles");
-				Visor.mostrarMensaje(null);
+				gesto.Conectar();
+				Visor.mostrarHoteles(gesto.getHoteles());
+				gesto.cerrar();
 				break;
 			case Menu.SALIR:
 				System.out.println("Saliendo");
