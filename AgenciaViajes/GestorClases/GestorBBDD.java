@@ -11,13 +11,14 @@ public class GestorBBDD extends Conector {
 	public ArrayList<clientes> getClientes(){
 
 		ArrayList<clientes> clientes = new ArrayList<clientes>();
-		PreparedStatement st;
+ 
 		try {
-			st = con.prepareStatement("");
-			ResultSet rs = st.executeQuery("select * from clientes");
+			PreparedStatement st = con.prepareStatement("select * from clientes");
+			ResultSet rs = st.executeQuery();
 
-			clientes cliente = new clientes();
+			
 			while (rs.next()) {
+				clientes cliente = new clientes();
 				cliente.setDni(rs.getString(1));
 				cliente.setNombre(rs.getString(2));
 				cliente.setApellidos(rs.getString(3));
@@ -45,7 +46,7 @@ public class GestorBBDD extends Conector {
 	}
 	public void eliminarCliente(int id) throws SQLException {
 		
-		String sent="DELETE FROM clientes WHERE id=?";
+		String sent="DELETE FROM clientes WHERE dni=?";
 		PreparedStatement pt = con.prepareStatement(sent);
 		
 		pt.setInt(1, id);
@@ -53,7 +54,7 @@ public class GestorBBDD extends Conector {
 	}
 	public clientes getCliente(int id) throws SQLException {
 		clientes newCliente= new clientes();
-		PreparedStatement pt = con.prepareStatement("SELECT * FROM clientes where ID = ?");
+		PreparedStatement pt = con.prepareStatement("SELECT * FROM clientes where DNI = ?");
 		pt.setInt(1, id);
 		ResultSet resultado=pt.executeQuery();
 			
