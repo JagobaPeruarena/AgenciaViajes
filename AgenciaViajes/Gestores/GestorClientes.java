@@ -40,7 +40,7 @@ public class GestorClientes {
 				gesto.cerrar();
 				break;
 			case Menu.SALIR:
-				System.out.println("Saliendo");
+				System.out.println("Saliendo al menu");
 				break;
 			default:
 				System.out.println("Numero incorrecto, intente de nuevo");
@@ -60,8 +60,6 @@ public class GestorClientes {
 		cliente.setDireccion(scan.nextLine());
 		System.out.println("Introduce el Localidad");
 		cliente.setLocalidad(scan.nextLine());
-	
-		
 
 		return cliente;
 	}

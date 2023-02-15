@@ -36,10 +36,11 @@ public class GestorHoteles {
 				System.out.println("Ver Hoteles");
 				gesto.Conectar();
 				Visor.mostrarHoteles(gesto.getHoteles());
+				
 				gesto.cerrar();
 				break;
 			case Menu.SALIR:
-				System.out.println("Saliendo");
+				System.out.println("Saliendo al menu");
 				break;
 			default:
 				System.out.println("Numero incorrecto, intente de nuevo");

@@ -20,8 +20,8 @@ public class Menu {
 	
 	public static void monstrarMenuPrincipal() {
 		System.out.println("Menu Principal:");
-		System.out.println(GESTIONAR_HOTELES+". Gestionar Libros");
-		System.out.println(GESTIONAR_CLIENTES+". Gestionar Socios");
+		System.out.println(GESTIONAR_HOTELES+". Gestionar Hoteles");
+		System.out.println(GESTIONAR_CLIENTES+". Gestionar Clientes");
 		System.out.println(GESTIONAR_RESERVAS+". Gestionar Prestamos");
 		System.out.println(SALIR+". Salir");
 	}
