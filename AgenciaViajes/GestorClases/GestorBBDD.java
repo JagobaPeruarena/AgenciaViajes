@@ -76,6 +76,8 @@ public class GestorBBDD extends Conector {
 		pt.setInt(4, hotel.getEstrellas());
 		pt.setString(5, hotel.getCompania());
 		pt.execute();
+		
+		
 	}
 	public ArrayList<hoteles> getHoteles(){
 

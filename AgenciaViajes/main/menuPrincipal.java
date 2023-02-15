@@ -26,7 +26,7 @@ public class menuPrincipal {
 				break;
 			case Menu.SALIR:
 				System.out.println("Adiossss");
-
+				break;
 			default:
 				System.out.println("Opcion incorrecta");
 				break;
