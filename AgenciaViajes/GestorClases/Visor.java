@@ -24,7 +24,7 @@ public class Visor {
 			System.out.println(hotel.toString());
 		}
 	}
-	public static void mostrarReserva(ArrayList<reservas> reservas) {
+	public static void mostrarReservas(ArrayList<reservas> reservas) {
 		for (reservas reserva: reservas) {
 			System.out.println(reserva.toString());
 		}
