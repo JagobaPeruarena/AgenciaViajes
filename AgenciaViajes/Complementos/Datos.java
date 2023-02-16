@@ -3,6 +3,7 @@ package Complementos;
 import java.util.Scanner;
 
 import Clases.clientes;
+import Clases.habitaciones;
 import Clases.hoteles;
 
 public class Datos {
@@ -39,6 +40,27 @@ public class Datos {
 		cliente.setLocalidad(scan.nextLine());
 	
 		return cliente;
+	}
+
+	public static habitaciones pedirDatosHabitaciones(Scanner scan) {
+		habitaciones habitacion = new habitaciones();
+		System.out.println("Introduce la id");
+		habitacion.setId(Integer.parseInt(scan.nextLine()));
+		System.out.println("Introduce el id_hotel");
+		habitacion.setId_hotel(Integer.parseInt(scan.nextLine()));
+		System.out.println("Introduce el numero de la habitacion");
+		habitacion.setNumero(scan.nextLine());
+		System.out.println("Introduce una descripcion");
+		habitacion.setDescripcion(scan.nextLine());
+		System.out.println("Introduce el precio");
+		habitacion.setPrecio(Double.parseDouble(scan.nextLine()));
+		return habitacion;
+	}
+	public static String seguir(Scanner scan) {
+		String result = "";
+		System.out.println("Quieres introducir otra habitacion, Y si / N no, opcion por defecto no");
+		result = scan.nextLine();
+		return result;
 	}
 
 }

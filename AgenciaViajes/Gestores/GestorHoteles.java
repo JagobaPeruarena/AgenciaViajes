@@ -3,7 +3,6 @@ package Gestores;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import Clases.habitaciones;
 import Clases.hoteles;
 import Complementos.Datos;
 import Complementos.Menu;
@@ -22,7 +21,7 @@ public class GestorHoteles {
 				System.out.println("Insertar Hoteles");
 				hoteles nHoteles = Datos.pedirDatosHoteles(scan);
 				gesto.Conectar();
-				gesto.insertarHotel(nHoteles);
+				gesto.insertarHotel(nHoteles, scan);
 				gesto.cerrar();
 				break;
 			case Menu.ELIMINAR_HOTELES:
@@ -48,9 +47,5 @@ public class GestorHoteles {
 				break;
 			}
 		} while (opcion!=0);
-	}
-	public static habitaciones pedirDatosHabitaciones(Scanner scan) {
-		habitaciones a=null;
-		return a;
 	}
 }

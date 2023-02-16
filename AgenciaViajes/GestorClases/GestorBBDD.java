@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Clases.*;
+import Complementos.*;
 
 public class GestorBBDD extends Conector {
 	public ArrayList<clientes> getClientes(){
@@ -68,7 +70,7 @@ public class GestorBBDD extends Conector {
 		return newCliente;
 		
 	}
-	public void insertarHotel(hoteles hotel) throws SQLException {
+	public void insertarHotel(hoteles hotel, Scanner scan) throws SQLException {
 		String sent ="INSERT INTO hoteles (cif,nombre,gerente,estrellas,compania) VALUES (?,?,?,?,?)";
 		PreparedStatement pt = con.prepareStatement(sent);
 		pt.setString(1, hotel.getCif());
@@ -79,8 +81,17 @@ public class GestorBBDD extends Conector {
 		pt.execute();
 		String ans="Y";
 		do {
-			
-			
+			habitaciones nhabitacion = new habitaciones();
+			nhabitacion= Datos.pedirDatosHabitaciones(scan);
+			String sentwo ="INSERT INTO habitaciones (id,id_hotel,numero,descripcion,precio) VALUES (?,?,?,?,?)";
+			pt = con.prepareStatement(sentwo);
+			pt.setInt(1, nhabitacion.getId());
+			pt.setInt(2, nhabitacion.getId_hotel());
+			pt.setString(3, nhabitacion.getNumero());
+			pt.setString(4, nhabitacion.getDescripcion());
+			pt.setDouble(5, nhabitacion.getPrecio());
+			pt.execute();
+			ans=Datos.seguir(scan);
 		} while (ans.equals("Y"));
 	}
 	public ArrayList<hoteles> getHoteles(){
@@ -128,5 +139,31 @@ public class GestorBBDD extends Conector {
 //		
 //		
 //	}
+	public ArrayList<reservas> getReservas(){
+
+		ArrayList<reservas> reservas = new ArrayList<reservas>();
+ 
+		try {
+			PreparedStatement st = con.prepareStatement("select * from reservas");
+			ResultSet rs = st.executeQuery();
+
+			
+			while (rs.next()) {
+				reservas reserva = new reservas();
+				reserva.setId(rs.getInt(1));
+				reserva.setId_habitacion(rs.getInt(2));
+				reserva.setDni(rs.getString(3));
+				reserva.setDesde(rs.getDate(4));	
+				reserva.setHasta(rs.getDate(5));
+				
+				
+				reservas.add(reserva);
+			}
+			return reservas;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
