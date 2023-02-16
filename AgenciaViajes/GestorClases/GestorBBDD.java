@@ -1,6 +1,7 @@
 package GestorClases;
 
 import java.awt.geom.AffineTransform;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,6 +38,7 @@ public class GestorBBDD extends Conector {
 		}
 		return null;
 	}
+	
 	public void insertarCliente(clientes cliente) throws SQLException {
 		String sent ="INSERT INTO clientes (dni,nombre,apellidos,direccion,localidad) VALUES (?,?,?,?,?)";
 		PreparedStatement pt = con.prepareStatement(sent);
@@ -47,6 +49,7 @@ public class GestorBBDD extends Conector {
 		pt.setString(5, cliente.getLocalidad());
 		
 	}
+	
 	public void eliminarCliente(int id) throws SQLException {
 		
 		String sent="DELETE FROM clientes WHERE dni=?";
@@ -55,6 +58,7 @@ public class GestorBBDD extends Conector {
 		pt.setInt(1, id);
 		pt.execute();
 	}
+	
 	public clientes getCliente(int id) throws SQLException {
 		clientes newCliente= new clientes();
 		PreparedStatement pt = con.prepareStatement("SELECT * FROM clientes where DNI = ?");
@@ -70,6 +74,7 @@ public class GestorBBDD extends Conector {
 		return newCliente;
 		
 	}
+	
 	public void insertarHotel(hoteles hotel, Scanner scan) throws SQLException {
 		String sent ="INSERT INTO hoteles (cif,nombre,gerente,estrellas,compania) VALUES (?,?,?,?,?)";
 		PreparedStatement pt = con.prepareStatement(sent);
@@ -94,6 +99,7 @@ public class GestorBBDD extends Conector {
 			ans=Datos.seguir(scan);
 		} while (ans.equals("Y"));
 	}
+	
 	public ArrayList<hoteles> getHoteles(){
 
 		ArrayList<hoteles> hoteles = new ArrayList<hoteles>();
@@ -121,6 +127,7 @@ public class GestorBBDD extends Conector {
 		}
 		return null;
 	}
+	
 	public void eliminarHotel(int id) throws SQLException {
 		
 		String sent="DELETE FROM hoteles WHERE id=?";
@@ -129,16 +136,19 @@ public class GestorBBDD extends Conector {
 		pt.setInt(1, id);
 		pt.execute();
 	}
-//	public void realizarReserva(reservas reserva) {
-//		String sent ="INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)";
-//		PreparedStatement pt = con.prepareStatement(sent);
-//		pt.setInt(1, reserva.getId_habitacion());
-//		pt.setString(2, reserva.getDni());
-//		pt.setDate(3,date reserva.getDesde());
-//		pt.setDate(4, reserva.getHasta());
-//		
-//		
-//	}
+	
+	public void realizarReserva(reservas reserva) throws SQLException {
+		String sent ="INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)";
+		PreparedStatement pt = con.prepareStatement(sent);
+		
+		pt.setInt(1, reserva.getId_habitacion());
+		pt.setString(2, reserva.getDni());
+		pt.setDate(3, new Date(reserva.getDesde().getTime()) );
+		pt.setDate(4, new Date(reserva.getHasta().getTime()));
+		
+		pt.execute();		
+	}
+	
 	public ArrayList<reservas> getReservas(){
 
 		ArrayList<reservas> reservas = new ArrayList<reservas>();
