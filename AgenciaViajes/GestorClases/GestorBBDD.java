@@ -1,5 +1,6 @@
 package GestorClases;
 
+import java.awt.geom.AffineTransform;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -76,8 +77,11 @@ public class GestorBBDD extends Conector {
 		pt.setInt(4, hotel.getEstrellas());
 		pt.setString(5, hotel.getCompania());
 		pt.execute();
-		
-		
+		String ans="Y";
+		do {
+			
+			
+		} while (ans.equals("Y"));
 	}
 	public ArrayList<hoteles> getHoteles(){
 
@@ -114,5 +118,15 @@ public class GestorBBDD extends Conector {
 		pt.setInt(1, id);
 		pt.execute();
 	}
+//	public void realizarReserva(reservas reserva) {
+//		String sent ="INSERT INTO reservas (id_habitacion,dni,desde,hasta) VALUES (?,?,?,?)";
+//		PreparedStatement pt = con.prepareStatement(sent);
+//		pt.setInt(1, reserva.getId_habitacion());
+//		pt.setString(2, reserva.getDni());
+//		pt.setDate(3,date reserva.getDesde());
+//		pt.setDate(4, reserva.getHasta());
+//		
+//		
+//	}
 
 }

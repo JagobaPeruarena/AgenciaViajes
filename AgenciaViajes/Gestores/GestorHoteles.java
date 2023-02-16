@@ -3,8 +3,9 @@ package Gestores;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
+import Clases.habitaciones;
 import Clases.hoteles;
+import Complementos.Datos;
 import Complementos.Menu;
 import GestorClases.GestorBBDD;
 import GestorClases.Visor;
@@ -19,7 +20,7 @@ public class GestorHoteles {
 			switch (opcion) {
 			case Menu.INSERTAR_HOTELES:
 				System.out.println("Insertar Hoteles");
-				hoteles nHoteles = pedirDatosHoteles(scan);
+				hoteles nHoteles = Datos.pedirDatosHoteles(scan);
 				gesto.Conectar();
 				gesto.insertarHotel(nHoteles);
 				gesto.cerrar();
@@ -48,21 +49,8 @@ public class GestorHoteles {
 			}
 		} while (opcion!=0);
 	}
-	public static hoteles pedirDatosHoteles(Scanner scan) {
-		hoteles hotel = new hoteles();
-		System.out.println("Introduce el CIF");
-		hotel.setCif(scan.nextLine());
-		System.out.println("Introduce el Nombre");
-		hotel.setNombre(scan.nextLine());
-		System.out.println("Introduce el Gerente");
-		hotel.setGerente(scan.nextLine());
-		System.out.println("Introduce el numero de estrellas");
-		hotel.setEstrellas(Integer.parseInt(scan.nextLine()));
-		System.out.println("Introduce el compania");
-		hotel.setCompania(scan.nextLine());
-	
-		
-
-		return hotel;
+	public static habitaciones pedirDatosHabitaciones(Scanner scan) {
+		habitaciones a=null;
+		return a;
 	}
 }

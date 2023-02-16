@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import Clases.clientes;
+import Complementos.Datos;
 import Complementos.Menu;
 import GestorClases.GestorBBDD;
 import GestorClases.Visor;
@@ -20,7 +21,7 @@ public class GestorClientes {
 			switch (opcion) {
 			case Menu.INSERTAR_CLIENTES:
 				System.out.println("Insertar Socio");
-				clientes nCliente = pedirDatosClientes(scan);
+				clientes nCliente = Datos.pedirDatosClientes(scan);
 				gesto.Conectar();
 				gesto.insertarCliente(nCliente);
 				gesto.cerrar();
@@ -47,21 +48,6 @@ public class GestorClientes {
 				break;
 			}
 		} while (opcion!=0);
-	}
-	public static clientes pedirDatosClientes(Scanner scan) {
-		clientes cliente = new clientes();
-		System.out.println("Introduce el DNI");
-		cliente.setDni(scan.nextLine());
-		System.out.println("Introduce el Nombre");
-		cliente.setNombre(scan.nextLine());
-		System.out.println("Introduce el Apellido");
-		cliente.setApellidos(scan.nextLine());
-		System.out.println("Introduce el Direccion");
-		cliente.setDireccion(scan.nextLine());
-		System.out.println("Introduce el Localidad");
-		cliente.setLocalidad(scan.nextLine());
-
-		return cliente;
 	}
 
 }
