@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Clases.clientes;
+import Clases.habitaciones;
 import Clases.hoteles;
 import Clases.reservas;
 
@@ -27,6 +28,11 @@ public class Visor {
 	public static void mostrarReservas(ArrayList<reservas> reservas) {
 		for (reservas reserva: reservas) {
 			System.out.println(reserva.toString());
+		}
+	}
+	public static void mostrarHabitaciones(ArrayList<habitaciones> habitaciones) {
+		for (habitaciones habitacion: habitaciones) {
+			System.out.println(habitacion.toString());
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package main;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Scanner;
 import Complementos.Menu;
 import Gestores.GestorClientes;
@@ -8,7 +9,7 @@ import Gestores.GestorHoteles;
 import Gestores.GestorReservas;
 
 public class menuPrincipal {
-	public static void run(Scanner scan) throws ClassNotFoundException, SQLException {
+	public static void run(Scanner scan) throws ClassNotFoundException, SQLException, ParseException {
 		int opcion =1;
 		do {
 			Menu.monstrarMenuPrincipal();

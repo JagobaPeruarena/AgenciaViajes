@@ -80,5 +80,11 @@ public class Datos {
 		
 		return nReservas;
 	}
+	public static Date preguntarFecha(String tipo, Scanner sca) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/YY");
+		System.out.println("Di la fecha "+ tipo + " en formato dd/MM/YY");
+		return format.parse(sca.nextLine());
+		
+	}
 
 }

@@ -25,7 +25,7 @@ public class Menu {
 		System.out.println("Menu Principal:");
 		System.out.println(GESTIONAR_HOTELES+". Gestionar Hoteles");
 		System.out.println(GESTIONAR_CLIENTES+". Gestionar Clientes");
-		System.out.println(GESTIONAR_RESERVAS+". Gestionar Prestamos");
+		System.out.println(GESTIONAR_RESERVAS+". Gestionar Reservas");
 		System.out.println(SALIR+". Salir");
 	}
 	public static void mostrarMenuClientes() {

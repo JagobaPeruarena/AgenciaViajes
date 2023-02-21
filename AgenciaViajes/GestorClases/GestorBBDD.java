@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.mysql.cj.x.protobuf.MysqlxExpr.Identifier;
+
 import Clases.*;
 import Complementos.*;
 
@@ -175,5 +177,31 @@ public class GestorBBDD extends Conector {
 		}
 		return null;
 	}
+public void eliminarReserva(int id) throws SQLException {
+		
+		String sent="DELETE FROM reservas WHERE id=?";
+		PreparedStatement pt = con.prepareStatement(sent);
+		
+		pt.setInt(1, id);
+		pt.execute();
+	}
+public ArrayList<habitaciones> getHabitaciones(int id) throws SQLException {
+	ArrayList<habitaciones> habitaciones = new ArrayList<habitaciones>();
+	
+	PreparedStatement pt = con.prepareStatement("SELECT * FROM habitaciones where id_hotel = ?");
+	pt.setInt(1, id);
+	ResultSet resultado=pt.executeQuery();
+		while (resultado.next()) {
+			habitaciones newHabitacion= new habitaciones();
+			newHabitacion.setId(resultado.getInt(1));
+			newHabitacion.setId_hotel(resultado.getInt(2));
+			newHabitacion.setNumero(resultado.getString(3));
+			newHabitacion.setDescripcion(resultado.getString(4));
+			newHabitacion.setPrecio(resultado.getDouble(5));
+		}
+	
+	return habitaciones;
+}
+
 
 }
